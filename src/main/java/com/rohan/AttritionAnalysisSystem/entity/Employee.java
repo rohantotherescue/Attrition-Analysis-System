@@ -17,6 +17,7 @@ public class Employee {
     @Id
     private String empId; // Primary key
     private String name;
+    private String securityClearanceNumber;
     private String role;
     private Date joiningDate;
     private Date terminationDate; // Nullable

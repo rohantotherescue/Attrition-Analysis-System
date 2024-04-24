@@ -2,6 +2,7 @@ package com.rohan.AttritionAnalysisSystem.service;
 
 import com.rohan.AttritionAnalysisSystem.entity.Employee;
 import com.rohan.AttritionAnalysisSystem.repo.EmployeeRepo;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.text.MessageFormat;
@@ -12,9 +13,11 @@ import java.util.List;
 public class EmployeeServiceImpl implements EmployeeService{
 
     private final EmployeeRepo repo;
+    private final PasswordEncoder passwordEncoder;
 
-    public EmployeeServiceImpl(EmployeeRepo repo) {
+    public EmployeeServiceImpl(EmployeeRepo repo, PasswordEncoder passwordEncoder) {
         this.repo = repo;
+        this.passwordEncoder= passwordEncoder;
     }
 
     public double calcAttritionRate(Date date){
@@ -34,6 +37,7 @@ public class EmployeeServiceImpl implements EmployeeService{
 
     public Employee onBoardEmployee(Employee employee){
         // check if joining date is greater than termination date
+        employee.setSecurityClearanceNumber(passwordEncoder.encode(employee.getSecurityClearanceNumber()));
         employee.setJoiningDate(new Date());
         return repo.save(employee);
     }
