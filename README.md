@@ -1,4 +1,4 @@
-#Employee Attrition System
+# Employee Attrition System
 ## Made using Spring Boot 3 + Spring Security 6 (using JWT)
 ## Endpoints: 
 ### /onBoard: onboard Employees and add entry in the database. Authenticated.
