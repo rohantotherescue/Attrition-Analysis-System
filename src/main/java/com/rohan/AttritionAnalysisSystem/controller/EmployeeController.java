@@ -6,7 +6,6 @@ import com.rohan.AttritionAnalysisSystem.service.EmployeeService;
 import com.rohan.AttritionAnalysisSystem.service.JwtService;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -30,11 +29,6 @@ public class EmployeeController {
     }
 
 
-    /**
-     * Allow only HR and manager
-     *
-     * @return
-     */
     @GetMapping("/getEmployeeList")
     public List<Employee> getEmployeeList() {
         return employeeService.findAllEmployees();
@@ -51,19 +45,12 @@ public class EmployeeController {
     }
 
     @PostMapping("/onBoard")
-//    @PreAuthorize("hasAuthority('HR')")
     @ResponseStatus(HttpStatus.CREATED)
     public Employee onBoardEmployee(@RequestBody Employee employee) {
         return employeeService.onBoardEmployee(employee);
     }
 
-    /**
-     * remove the employee and return the removed employee
-     *
-     * @return
-     */
     @PutMapping("/offBoard")
-//    @PreAuthorize("hasAuthority('HR')")
     public String offBoardEmployee(@RequestParam String empId) {
         return employeeService.offBoardEmployee(empId);
     }

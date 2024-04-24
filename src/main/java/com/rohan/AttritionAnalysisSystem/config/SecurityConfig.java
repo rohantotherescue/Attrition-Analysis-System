@@ -34,16 +34,7 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-//       csrf().disable()
-//       .authorizeHttpRequests()
-//                .requestMatchers("/Employee", "/getEmployeeList","/authenticate").permitAll()
-//                .and().authorizeHttpRequests().requestMatchers("/offBoard", "/onBoard", "/getAttritionRate")
-//                .authenticated().and().sessionManagement()
-//                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-//                .and().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-//                .and().authenticationProvider(authenticationProvider())
-//                .addFilterBefore(authFilter, UsernamePasswordAuthenticationFilter.class)
-//                .build();
+
         return http.csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests((authorize) -> authorize
                         .requestMatchers("/Employee", "/getEmployeeList","/authenticate").permitAll()

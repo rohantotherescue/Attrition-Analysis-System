@@ -21,9 +21,10 @@ public class EmployeeServiceImpl implements EmployeeService{
     }
 
     public double calcAttritionRate(Date date){
-        long employeesExited= repo.countByTerminationDateBefore(date);
-        long employeePresent= repo.countByJoiningDateBefore(date);
-        double attritionRate= (double) (employeesExited/ employeePresent)* 100;
+        double employeesExited= (double) repo.countByTerminationDateBefore(date);
+        double employeePresent= (double) repo.countByJoiningDateBefore(date);
+        System.out.println(employeesExited+" "+employeePresent);
+        double attritionRate= ((employeesExited/ employeePresent)* 100);
         return attritionRate;
     }
 
@@ -47,7 +48,6 @@ public class EmployeeServiceImpl implements EmployeeService{
         employee.setTerminationDate(new Date());
         repo.save(employee);
         return MessageFormat.format("Employee {0} has been off-boarded successfully!", empId);
-        // add the current date to termination date
     }
 
 
