@@ -51,7 +51,7 @@ public class EmployeeController {
     }
 
     @PostMapping("/onBoard")
-    @PreAuthorize("hasAuthority('HR')")
+//    @PreAuthorize("hasAuthority('HR')")
     @ResponseStatus(HttpStatus.CREATED)
     public Employee onBoardEmployee(@RequestBody Employee employee) {
         return employeeService.onBoardEmployee(employee);
@@ -63,7 +63,7 @@ public class EmployeeController {
      * @return
      */
     @PutMapping("/offBoard")
-    @PreAuthorize("hasAuthority('HR')")
+//    @PreAuthorize("hasAuthority('HR')")
     public String offBoardEmployee(@RequestParam String empId) {
         return employeeService.offBoardEmployee(empId);
     }
