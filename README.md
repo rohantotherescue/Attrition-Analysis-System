@@ -8,4 +8,4 @@
 ### /Employee: returns the details on the particular employee who's empId was sent through the Request Params.
 ### (Please note: Authenticated endpoints can be accessed by on the HR)
 
-### JWT token valid only for 5 mins.
+### JWT token valid only for 5 mins. Done as a part of OOADJ course.
